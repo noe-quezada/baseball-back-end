@@ -20,6 +20,17 @@ mongoose.connect(connection_url);
 //API endopoints
 app.get("/", (req, res) => res.status(200).send("ghello mate"));
 
+//parse to cast
+app.get("/api/players/:name", (req, res) => {
+  // const player = Players.find((c) => c.id === String(req.params.name));
+  // if (!player) {
+  //   res.status(404).send("The player was not found")
+  // } else {
+  //   res.send(player)
+  // }
+  res.send(req.params.name);
+});
+
 app.post("/players", (req, res) => {
   const dbPlayers = req.body;
 
@@ -41,6 +52,8 @@ app.get("/players", (req, res) => {
     }
   });
 });
+
+app.put("/players/:points", (req, res) => {});
 
 //Listener
 app.listen(port, () => console.log(`listening on localhost: ${port}`));
