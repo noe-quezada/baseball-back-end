@@ -1,1 +1,4 @@
 node_modules
+request.http
+.env
+.env.template
