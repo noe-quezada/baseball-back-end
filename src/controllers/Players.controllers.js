@@ -1,64 +1,58 @@
 import Players from "../models/Players.model.js";
 
 export const getAll = async (req, res) => {
-  await Players.find((err, data) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(200).send(data);
-    }
-  });
+  try {
+    const data = await Players.find();
+    return res.status(200).send(data);
+  } catch (error) {
+    res.status(500).send(error);
+  }
 };
 
-export const getOne = async (req, URLres) => {
+export const getOne = async (req, res) => {
   const { id } = req.params;
 
-  await Players.findById(id, (err, data) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(200).send(data);
-    }
-  });
+  try {
+    const data = await Players.findById(id);
+    res.status(200).send(data);
+  } catch (error) {
+    res.status(500).send(error);
+  }
 };
 
 export const post = async (req, res) => {
   const dbPlayers = req.body;
 
-  await Players.create(dbPlayers, (err, data) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(201).send(data);
-    }
-  });
+  try {
+    const data = await Players.create(dbPlayers);
+    res.status(201).send(data);
+  } catch (error) {
+    res.status(500).send(error);
+  }
 };
 
 export const put = async (req, res) => {
   const { id } = req.params;
   const { name, points } = req.body;
 
-  await Players.updateOne(
-    { _id: id },
-    { $set: { name, points } },
-    (err, data) => {
-      if (err) {
-        res.status(500).send(err);
-      } else {
-        res.status(200).send(data);
-      }
-    }
-  );
+  try {
+    const data = await Players.updateOne(
+      { _id: id },
+      { $set: { name, points } }
+    );
+    res.status(200).send(data);
+  } catch (error) {
+    res.status(500).send(err);
+  }
 };
 
-export const deleteOne = async (req,res) =>{
-    const { id } = req.params;
+export const deleteOne = async (req, res) => {
+  const { id } = req.params;
 
-  Players.deleteOne({ _id: id }, (err, data) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(200).send(data);
-    }
-  });
-}
+  try {
+    const data = await Players.deleteOne({ _id: id });
+    res.status(200).send(data);
+  } catch (error) {
+    res.status(500).send(err);
+  }
+};

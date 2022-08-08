@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
+import db from "../config/db.config.js"
 
 try {
-  await mongoose
-    .connect(process.env.URL)
-    .then(() => console.log("Connected to MongoDB Atlas"));
+  await mongoose.connect(db.URL);
+
+  console.log("Connected to MongoDB Atlas");
 } catch (error) {
   console.error(error);
 }

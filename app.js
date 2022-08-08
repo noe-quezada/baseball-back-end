@@ -1,11 +1,11 @@
-import cors from "cors";
 import express from "express";
+import cors from "cors";
 import mongoose from "mongoose";
-import router from "./src/routes/Players.js";
 import Players from "./src/models/Players.model.js";
 import dbConfig from "./src/config/db.config.js";
-import "./src/connection/dbConnection.js"
-
+import "./src/connection/dbConnection.js";
+import "./src/middlewares/Players.js";
+import router from "./src/routes/Players.js";
 
 import dontenv from "dotenv";
 const app = express();
@@ -15,13 +15,6 @@ dontenv.config();
 app.use(express.json());
 app.use(cors());
 app.use("/api", router);
-
-// console.log(process.env.PORT + "d fs ");
-//DB config
-mongoose
-  .connect(dbConfig.URL)
-  .then(() => console.log("Connected to MongoDB Atlas"))
-  .catch((error) => console.error(error));
 
 //Listener
 app.listen(dbConfig.PORT, () =>
