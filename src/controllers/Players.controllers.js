@@ -24,8 +24,12 @@ export const post = async (req, res) => {
   const dbPlayers = req.body;
 
   try {
-    const data = await Players.create(dbPlayers);
-    res.status(201).send(data);
+    if (dbPlayers.points < 0 || dbPlayers.points%1 !== 0) {
+      res.send("points cannot be negative nor floats");
+    } else {
+      const data = await Players.create(dbPlayers);
+      res.status(201).send(data);
+    }
   } catch (error) {
     res.status(500).send(error);
   }
@@ -36,11 +40,15 @@ export const put = async (req, res) => {
   const { name, points } = req.body;
 
   try {
-    const data = await Players.updateOne(
-      { _id: id },
-      { $set: { name, points } }
-    );
-    res.status(200).send(data);
+    if (points < 0 || points%1 !== 0) {
+      res.send("points cannot be negative nor floats");
+    } else {
+      const data = await Players.updateOne(
+        { _id: id },
+        { $set: { name, points } }
+      );
+      res.status(200).send(data);
+    }
   } catch (error) {
     res.status(500).send(err);
   }

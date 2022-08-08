@@ -4,6 +4,7 @@ const playerSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
+    minLenght: 3,
   },
   points: {
     type: Number,
