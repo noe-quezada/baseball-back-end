@@ -1,0 +1,29 @@
+###Post one
+POST http://localhost:8000/api/players HTTP/1.1
+Content-Type: application/json
+
+
+{
+    "name": "Noe Torres",
+    "points": 5
+}
+
+###Get all
+GET http://localhost:8000/api/players HTTP/1.1
+Content-Type: application/json
+
+
+###Get one
+GET http://localhost:8000/api/players/62ed55262fdd4fa998e34042 HTTP/1.1
+Content-Type: application/json
+
+###Update one
+PUT http://localhost:8000/api/players/62ed55262fdd4fa998e34042 HTTP/1.1
+Content-Type: application/json
+
+{
+    "points": 8.1
+}
+
+###Delete one
+DELETE http://localhost:8000/api/players/62ed55262fdd4fa998e34042 HTTP/1.1
