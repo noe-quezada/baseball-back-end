@@ -26,4 +26,4 @@ Content-Type: application/json
 }
 
 ###Delete one
-DELETE http://localhost:8000/api/players/62ed55262fdd4fa998e34042 HTTP/1.1
+DELETE http://localhost:8000/api/players/62f2dbe431578b89ed4a8be1 HTTP/1.1
