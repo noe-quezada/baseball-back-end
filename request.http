@@ -4,8 +4,8 @@ Content-Type: application/json
 
 
 {
-    "name": "Noe Torres",
-    "points": 5
+    "name": "Rodrigo",
+    "points": 170
 }
 
 ###Get all
