@@ -3,10 +3,7 @@ POST http://localhost:8000/api/players HTTP/1.1
 Content-Type: application/json
 
 
-{
-    "name": "Rodrigo",
-    "points": 170
-}
+["Rodrigo","Alex","Martin"]
 
 ###Get all
 GET http://localhost:8000/api/players HTTP/1.1
@@ -27,3 +24,6 @@ Content-Type: application/json
 
 ###Delete one
 DELETE http://localhost:8000/api/players/62f2dbe431578b89ed4a8be1 HTTP/1.1
+
+###Delete All
+DELETE http://localhost:8000/api/delete HTTP/1.1

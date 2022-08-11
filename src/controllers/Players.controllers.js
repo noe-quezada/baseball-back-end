@@ -52,7 +52,7 @@ export const put = async (req, res) => {
       res.status(200).send(data);
     }
   } catch (error) {
-    res.status(500).send(err);
+    res.status(500).send(error);
   }
 };
 
@@ -63,6 +63,16 @@ export const deleteOne = async (req, res) => {
     const data = await Players.deleteOne({ _id: id });
     res.status(200).send(data);
   } catch (error) {
-    res.status(500).send(err);
+    res.status(500).send(error);
+  }
+};
+
+export const deleteMany = async (req, res) => {
+
+  try {
+    const data = await Players.deleteMany({});
+    res.status(200).send(data)
+  } catch (error) {
+    res.status(500).send(error);
   }
 };

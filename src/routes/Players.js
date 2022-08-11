@@ -5,6 +5,7 @@ import {
   post,
   put,
   deleteOne,
+  deleteMany,
 } from "../controllers/Players.controllers.js";
 const router = express.Router();
 
@@ -22,5 +23,8 @@ router.put("/players/:id", put);
 
 //Delete a Player
 router.delete("/players/:id", deleteOne);
+
+//Delete all
+router.delete("/delete", deleteMany);
 
 export default router;
